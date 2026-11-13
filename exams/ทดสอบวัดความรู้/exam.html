@@ -115,9 +115,66 @@
   .picto td:last-child { width: 64mm; }
   .picto img { height: 6.4mm; margin-right: 1mm; vertical-align: middle; }
   .cap { text-align: center; font-size: 10pt; color: var(--gray); margin-top: .3mm; }
+
+  /* กระดาษคำตอบ */
+  .as-list { flex: 1; display: flex; flex-direction: column; gap: 1.6mm; }
+  .as-cols, .as-row { display: grid; grid-template-columns: 11mm 1fr 26mm 16mm; align-items: stretch; }
+  .as-cols { font-size: 10pt; color: var(--gray); font-weight: 600; text-align: center; padding: 0 0 .5mm; }
+  .as-cols span:nth-child(2) { text-align: left; padding-left: 4mm; }
+  .as-row { flex: 1; border: 1.2px solid var(--line); border-radius: 7px; overflow: hidden; background: rgba(255,255,255,.55); }
+  .as-row .num { align-items: center; padding-top: 0; }
+  .as-fill { margin: 1.6mm 3mm; border-bottom: 1.3px dotted var(--gray); }
+  .as-unit { display: flex; align-items: center; justify-content: flex-start; color: var(--navy); font-weight: 600; font-size: 11pt; }
+  .as-chk { border-left: 1.2px solid var(--line); background: var(--cream); }
+  .as-sum { flex: none; display: flex; justify-content: space-between; gap: 6mm; margin-top: 1mm; }
+  .as-total, .as-sign { display: flex; align-items: flex-end; gap: 2mm; font-weight: 600; color: var(--navy); }
+  .as-total { border: 1.5px solid var(--navy); border-radius: 7px; background: var(--sky); padding: 1.5mm 4mm; font-size: 13pt; }
+  .as-total i { width: 22mm; border-bottom: 1.5px solid var(--navy); height: 1.1em; }
+  .as-sign i { width: 60mm; border-bottom: 1.2px dotted var(--gray); height: 1.1em; }
 </style>
 </head>
 <body>
+
+<!-- ======================= กระดาษคำตอบ ======================= -->
+<div class="page">
+  <img class="wm" src="images/logo.png" alt="" onerror="this.remove()">
+
+  <div class="head">
+    <h1>กระดาษคำตอบ</h1>
+    <div class="sub">ทดสอบวัดความรู้ · วิชาคณิตศาสตร์ · ระดับประถมศึกษาตอนปลาย · จำนวน 15 ข้อ</div>
+    <div class="fields">
+      <span class="f name">ชื่อ-สกุล <i class="fill"></i></span>
+      <span class="f cls">ชั้น <i class="fill"></i></span>
+      <span class="f no">เลขที่ <i class="fill"></i></span>
+    </div>
+    <div class="note"><b>คำชี้แจง</b> เขียนคำตอบสุดท้ายของแต่ละข้อลงในช่องให้ตรงกับเลขข้อ ช่อง “ตรวจ” สำหรับครูเท่านั้น</div>
+  </div>
+
+  <div class="as-list">
+    <div class="as-cols"><span>ข้อ</span><span>คำตอบ</span><span>หน่วย</span><span>ตรวจ</span></div>
+    <div class="as-row"><div class="num">1</div><div class="as-fill"></div><div class="as-unit"></div><div class="as-chk"></div></div>
+    <div class="as-row"><div class="num">2</div><div class="as-fill"></div><div class="as-unit"></div><div class="as-chk"></div></div>
+    <div class="as-row"><div class="num">3</div><div class="as-fill"></div><div class="as-unit"></div><div class="as-chk"></div></div>
+    <div class="as-row"><div class="num">4</div><div class="as-fill"></div><div class="as-unit"></div><div class="as-chk"></div></div>
+    <div class="as-row"><div class="num">5</div><div class="as-fill"></div><div class="as-unit">วัน</div><div class="as-chk"></div></div>
+    <div class="as-row"><div class="num">6</div><div class="as-fill"></div><div class="as-unit">ชั่วโมง</div><div class="as-chk"></div></div>
+    <div class="as-row"><div class="num">7</div><div class="as-fill"></div><div class="as-unit">กรัม</div><div class="as-chk"></div></div>
+    <div class="as-row"><div class="num">8</div><div class="as-fill"></div><div class="as-unit">นาที</div><div class="as-chk"></div></div>
+    <div class="as-row"><div class="num">9</div><div class="as-fill"></div><div class="as-unit">เซนติเมตร</div><div class="as-chk"></div></div>
+    <div class="as-row"><div class="num">10</div><div class="as-fill"></div><div class="as-unit">บาท</div><div class="as-chk"></div></div>
+    <div class="as-row"><div class="num">11</div><div class="as-fill"></div><div class="as-unit">ขา</div><div class="as-chk"></div></div>
+    <div class="as-row"><div class="num">12</div><div class="as-fill"></div><div class="as-unit">ผล</div><div class="as-chk"></div></div>
+    <div class="as-row"><div class="num">13</div><div class="as-fill"></div><div class="as-unit">ผล</div><div class="as-chk"></div></div>
+    <div class="as-row"><div class="num">14</div><div class="as-fill"></div><div class="as-unit"></div><div class="as-chk"></div></div>
+    <div class="as-row"><div class="num">15</div><div class="as-fill"></div><div class="as-unit">เหรียญ</div><div class="as-chk"></div></div>
+  </div>
+
+  <div class="as-sum">
+    <div class="as-total">คะแนนรวม <i></i> / 15</div>
+    <div class="as-sign">ผู้ตรวจ <i></i></div>
+  </div>
+  <div class="foot"><span class="tt">ทดสอบวัดความรู้ · กระดาษคำตอบ</span></div>
+</div>
 
 <!-- ======================= หน้า 1 ======================= -->
 <div class="page">
