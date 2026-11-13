@@ -65,7 +65,7 @@
   .q { margin: 0; }
   .body.side { display: grid; grid-template-columns: 1fr auto; grid-template-rows: auto 1fr auto; column-gap: 4mm; }
   .body.side > .fig { grid-column: 2; grid-row: 1 / 4; margin: 0; }
-  .body.side > .ans { grid-column: 1; justify-self: end; }
+  .body.side > .ans { grid-column: 1; justify-self: start; }
   .work {
     flex: 1; min-height: 5mm; margin-top: 1mm;
     border-top: 1px dashed var(--line);
@@ -76,11 +76,17 @@
     font-size: 8.5pt; color: #9aa3b1;
   }
   .ans {
-    align-self: flex-end; margin-top: 1mm; font-size: 11.5pt; color: var(--navy); font-weight: 600;
-    display: flex; align-items: flex-end; gap: 1.5mm;
+    align-self: flex-start; margin-top: 1mm; font-size: 11pt; color: var(--navy); font-weight: 600;
+    display: inline-flex; align-items: stretch; border: 1.2px solid var(--navy); border-radius: 6px; overflow: hidden;
+    background: var(--cream);
   }
-  .ans i { display: inline-block; width: 40mm; border-bottom: 1.3px solid var(--blue); height: 1.1em; }
-  .expr { font-weight: 600; white-space: nowrap; }
+  .ans b { background: var(--navy); color: #fff; padding: .2mm 2.6mm; font-weight: 600; display: flex; align-items: center; }
+  .ans { width: 66mm; }
+  .ans i { display: inline-block; flex: 1; }
+  .ans u { text-decoration: none; padding: .2mm 2.6mm .2mm 0; display: flex; align-items: center; }
+  .expr { font-weight: 600; white-space: nowrap; background: var(--sky); border-radius: 4px; padding: 0 1.6mm; color: var(--navy); }
+  .foot { position: absolute; left: 12mm; right: 12mm; bottom: 3mm; display: flex; justify-content: space-between;
+          font-size: 8.5pt; color: #9aa3b1; }
 
   /* รูปประกอบ */
   .fig { flex: none; display: flex; align-items: center; justify-content: center; margin-top: 1mm; }
@@ -132,7 +138,7 @@
     <div class="body">
       <p class="q">จงหาค่าของ <span class="expr">10 − 1 + 5 − 3 + 4 − 2 + 6 − 11 + 7 − 8 + 9</span></p>
       <div class="work"></div>
-      <div class="ans">ตอบ <i></i></div>
+      <div class="ans"><b>ตอบ</b><i></i></div>
     </div>
   </div>
 
@@ -141,7 +147,7 @@
     <div class="body">
       <p class="q">จงหาค่าของ <span class="expr">258 + 36 × (192 − 174)</span></p>
       <div class="work"></div>
-      <div class="ans">ตอบ <i></i></div>
+      <div class="ans"><b>ตอบ</b><i></i></div>
     </div>
   </div>
 
@@ -150,7 +156,7 @@
     <div class="body">
       <p class="q">จงหาผลลัพธ์ของ <span class="expr">350 + 264 × 11 ÷ 121 − 414 + 777</span></p>
       <div class="work"></div>
-      <div class="ans">ตอบ <i></i></div>
+      <div class="ans"><b>ตอบ</b><i></i></div>
     </div>
   </div>
 
@@ -159,7 +165,7 @@
     <div class="body">
       <p class="q">จากลำดับตัวเลข <span class="expr">1, 8, 15, 22, …</span> จงหาว่าตัวเลขในลำดับที่ 10 คือจำนวนใด</p>
       <div class="work"></div>
-      <div class="ans">ตอบ <i></i></div>
+      <div class="ans"><b>ตอบ</b><i></i></div>
     </div>
   </div>
 
@@ -168,7 +174,7 @@
     <div class="body">
       <p class="q">1 ปี 3 สัปดาห์ 8 วัน 72 ชั่วโมง คิดเป็นกี่วัน (กำหนดให้ปีนั้นเดือนกุมภาพันธ์มี 28 วัน)</p>
       <div class="work"></div>
-      <div class="ans">ตอบ <i></i> วัน</div>
+      <div class="ans"><b>ตอบ</b><i></i><u>วัน</u></div>
     </div>
   </div>
 
@@ -177,7 +183,7 @@
     <div class="body">
       <p class="q">เวลา 1 วัน 9 ชั่วโมง 30 นาที กับเวลาครึ่งวันรวมกับอีก 20 ชั่วโมง 30 นาที ต่างกันกี่ชั่วโมง</p>
       <div class="work"></div>
-      <div class="ans">ตอบ <i></i> ชั่วโมง</div>
+      <div class="ans"><b>ตอบ</b><i></i><u>ชั่วโมง</u></div>
     </div>
   </div>
 
@@ -192,7 +198,7 @@
             - พริก 2 ขีด<br>- โหระพา 30 กรัม<br>- กะเพรา 28 กรัม<br>- กระเทียม 3 ขีด<br>- ผักชี 84 กรัม
           </div>
         </div>
-      <div class="ans">ตอบ <i></i> กรัม</div>
+      <div class="ans"><b>ตอบ</b><i></i><u>กรัม</u></div>
     </div>
   </div>
 
@@ -203,9 +209,10 @@
         เธอจึงทำการบ้านต่ออีก 20 นาที แล้วเข้านอน อยากทราบว่ามะขิ่นใช้เวลาทำการบ้านทั้งหมดกี่นาที</p>
       <div class="work"></div>
         <div class="fig"><img class="clock" src="images/clock.svg" alt="นาฬิกาบอกเวลา 7 นาฬิกา 5 นาที"></div>
-      <div class="ans">ตอบ <i></i> นาที</div>
+      <div class="ans"><b>ตอบ</b><i></i><u>นาที</u></div>
     </div>
   </div>
+  <div class="foot"><span>ทดสอบวัดความรู้ · คณิตศาสตร์</span><span>หน้า 1 / 2</span></div>
 </div>
 
 <!-- ======================= หน้า 2 ======================= -->
@@ -218,7 +225,7 @@
       <p class="q">จงหาว่าสิ่งของทั้ง 3 ชิ้นนี้ มีความยาวรวมกันทั้งหมดกี่เซนติเมตร</p>
       <div class="work"></div>
         <div class="fig"><img class="ruler" src="images/ruler.png" alt="เชือก กุญแจ และบัตร วางเทียบไม้บรรทัด"></div>
-      <div class="ans">ตอบ <i></i> เซนติเมตร</div>
+      <div class="ans"><b>ตอบ</b><i></i><u>เซนติเมตร</u></div>
     </div>
   </div>
 
@@ -229,7 +236,7 @@
         อดิศรซื้อปากกาครึ่งโหล ยางลบ 3 ก้อน และไม้บรรทัดกับดินสอรวมกัน 1 โหล ถ้าเขาจ่ายเงินให้ร้านค้า 200 บาท
         เขาจะได้รับเงินทอนกี่บาท</p>
       <div class="work"></div>
-      <div class="ans">ตอบ <i></i> บาท</div>
+      <div class="ans"><b>ตอบ</b><i></i><u>บาท</u></div>
     </div>
   </div>
 
@@ -240,7 +247,7 @@
         วันหนึ่งมีผู้เข้าชมสวนสัตว์ 320 คนเพื่อดูโชว์โลมารอบพิเศษ และมีเจ้าหน้าที่ในสวนสัตว์อีก 54 คน
         อยากทราบว่าจำนวนขาของคนและจำนวนขาของสัตว์ในสวนสัตว์แห่งนี้ต่างกันกี่ขา</p>
       <div class="work"></div>
-      <div class="ans">ตอบ <i></i> ขา</div>
+      <div class="ans"><b>ตอบ</b><i></i><u>ขา</u></div>
     </div>
   </div>
 
@@ -259,7 +266,7 @@
       <div class="cap">กำหนดให้ รูปภาพ 1 รูป แทนผลไม้ 3 ผล</div>
       </div></div>
       <div class="work"></div>
-      <div class="ans">ตอบ <i></i> ผล</div>
+      <div class="ans"><b>ตอบ</b><i></i><u>ผล</u></div>
     </div>
   </div>
 
@@ -268,7 +275,7 @@
     <div class="body">
       <p class="q">จากข้อ 12 บ้านที่ได้ผลไม้มากที่สุด ได้จำนวนผลไม้มากกว่าบ้านที่ได้น้อยที่สุดอยู่กี่ผล</p>
       <div class="work"></div>
-      <div class="ans">ตอบ <i></i> ผล</div>
+      <div class="ans"><b>ตอบ</b><i></i><u>ผล</u></div>
     </div>
   </div>
 
@@ -284,7 +291,7 @@
             <span class="r sum">CB4</span>
           </div>
         </div>
-      <div class="ans">ตอบ <i></i></div>
+      <div class="ans"><b>ตอบ</b><i></i></div>
     </div>
   </div>
 
@@ -293,9 +300,10 @@
     <div class="body">
       <p class="q">แบมแบมมีเงิน 38 บาท ซึ่งเป็นเหรียญทั้งหมด แบมแบมมีเหรียญน้อยที่สุดกี่เหรียญ</p>
       <div class="work"></div>
-      <div class="ans">ตอบ <i></i> เหรียญ</div>
+      <div class="ans"><b>ตอบ</b><i></i><u>เหรียญ</u></div>
     </div>
   </div>
+  <div class="foot"><span>ทดสอบวัดความรู้ · คณิตศาสตร์</span><span>หน้า 2 / 2</span></div>
 </div>
 
 </body>
