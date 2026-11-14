@@ -209,6 +209,7 @@ body{margin:0;font-family:Mali,sans-serif;font-weight:500;color:var(--brown)}
 .cvr2 .cvs{font-size:19pt;font-weight:600;color:#ECE9FE}.cvr2 .cvs b{color:#FFF1CC}
 .cvr2 .cvm{font-size:15pt;font-weight:600;background:rgba(255,255,255,.14);border-radius:6mm;padding:2mm 8mm}
 .cvr2 .cvf{position:absolute;right:11mm;bottom:6mm}.cvr2 .cvf .brand{font-family:Mali,sans-serif;font-weight:700;color:#FFF1CC;font-size:13.5pt}
+.cvr2 .cvline{position:absolute !important;left:0;right:0;top:0;height:3.2mm;background:#FECA54}.cvr2 .cvline2{position:absolute !important;left:0;right:0;bottom:0;height:3.2mm;background:#6A5CE5}
 .dg{display:inline-block;min-width:1.35em;text-align:center;border:.5mm solid currentColor;border-radius:1mm;margin-right:1.2mm;line-height:1.3;background:#fff}.pimg .crop,.aimg .crop{background:#fff}img.img{object-fit:contain}.below .pimg img.crop{max-height:46mm;height:auto;max-width:92%}.below .pimg img[src$="q27.png"]{height:74mm;max-height:74mm;width:auto}.steps .inl.wide:has(img){min-height:40mm}.steps .inl.wide img{max-height:44mm !important}
 .prob ul{list-style:none;margin:1.5mm 0 0 2mm}.prob ul.opts{display:flex;flex-wrap:wrap;gap:1.2mm 6mm;margin-left:0}.prob ul.opts li{background:#EEF2F9;border-radius:3mm;padding:0 3mm;margin:0}.below .pimg .img{height:46mm}.steps .tb2{font-size:.62em;margin-top:1.5mm}.steps .tb2 th,.steps .tb2 td{padding:.6mm 2.6mm}
 .steps .inl.wide{min-height:34mm}.steps .inl.wide svg{max-height:46mm !important}
@@ -257,7 +258,7 @@ def fsize(q):
     return 29 if n<60 else 26 if n<110 else 23 if n<200 else 21 if n<320 else 19
 slides=[]
 total=2+30*6
-cv1 = '<section class="sl cvr"><h1 style="position:absolute;left:-9999px">หน้าปก Sigma Junior ป.5</h1><img class="bgb" src="assets/cover_blur.jpg"><img class="fg" src="assets/cover2.jpg"></section>'
+cv1 = '<section class="sl cvr2"><h1 style="position:absolute;left:-9999px">หน้าปก</h1><div class="cvline"></div><div class="cvline2"></div><div class="cvc"><div class="cvl"><img src="assets/logo.png"></div><div class="cvchip">สไลด์ติวสอบแข่งขัน · ระดับชั้นประถมศึกษาปีที่ 5</div><div class="cvt">ข้อสอบชิงแชมป์การคิดและการแก้ปัญหาคณิตศาสตร์<br>ครั้งที่ 25 (LPMC)</div><div class="cvs">วิชา<b>คณิตศาสตร์</b> · ปีการศึกษา 2567 · สอบวันอาทิตย์ที่ 17 พฤศจิกายน 2567</div><div class="cvm">ข้อจริง 30 ข้อ · Mock Test 60 ข้อ · เฉลยละเอียดทุกข้อ</div></div><div class="cvf"><span class="brand">Math by T’Yasmin · Sigma Junior ป.5</span></div></section>'
 cover = '<section class="sl cover"><h1 style="position:absolute;left:-9999px">สารบัญ</h1><div class="chip">สารบัญ · สไลด์ติวสอบแข่งขัน</div><div class="big">ชิงแชมป์การคิดและแก้ปัญหา LPMC ครั้งที่ 25<br><b>คณิตศาสตร์</b> ป.5 · พ.ศ. 2567</div><div class="meta">ทั้งหมด 30 ข้อ · ข้อจริง → เฉลย → Mock Test 1 → เฉลย → Mock Test 2 → เฉลย</div><div class="list">'+''.join(f'<div><b>ข้อ {n}</b> {html.escape(ALL[n]["topic"])}</div>' for n in range(1,31))+'<div style="grid-column:span 6;text-align:center;--c:#FECA54">ลำดับ: ข้อจริง → เฉลย → Mock Test 1 → เฉลย → Mock Test 2 → เฉลย · เขียนวิธีคิดบนสไลด์ด้วยปากกาใน GoodNotes</div></div><div class="ft"><span></span><span class="brand">Math by T’Yasmin</span></div></section>'
 slides.append(cv1)
 slides.append(cover)
