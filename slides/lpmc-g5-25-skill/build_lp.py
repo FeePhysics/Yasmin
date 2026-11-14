@@ -82,7 +82,7 @@ body{margin:0;font-family:Mali,sans-serif;font-weight:500;color:var(--brown)}
 .a .ft .brand{color:var(--dgreen)}
 .cover{justify-content:center;align-items:center;text-align:center;gap:5mm}
 .cover .wm{width:150mm;top:50%}
-.cover .big{font-size:34pt;font-weight:700;line-height:1.3;color:var(--brown)}.cover .big b{color:var(--dorange)}
+.cover .big{font-size:31pt;font-weight:700;line-height:1.3;color:var(--brown)}.cover .big b{color:var(--dorange)}
 .cover .chip{background:var(--orange);color:#fff;border-radius:8mm;padding:2.2mm 10mm;font-weight:700;font-size:19pt;box-shadow:0 1mm 0 var(--dorange)}
 .cover .meta{font-size:16pt;font-weight:600;color:var(--mbrown)}
 .cover .list{display:grid;grid-template-columns:repeat(6,1fr);gap:2.6mm;width:275mm;margin-top:2mm}
@@ -256,8 +256,8 @@ def fsize(q):
     return 29 if n<60 else 26 if n<110 else 23 if n<200 else 21 if n<320 else 19
 slides=[]
 total=2+30*6
-cv1 = '<section class="sl cvr2"><h1 style="position:absolute;left:-9999px">หน้าปก</h1><div class="cvc"><div class="cvl"><img src="assets/logo.png"></div><div class="cvchip">สไลด์ติวสอบแข่งขัน · ประถมศึกษาปีที่ 5</div><div class="cvt">ข้อสอบชิงแชมป์การคิด<br>และการแก้ปัญหาคณิตศาสตร์ ครั้งที่ 25</div><div class="cvs">วิชา<b>คณิตศาสตร์</b> · LPMC · สอบวันที่ 17 พฤศจิกายน 2567</div><div class="cvm">ข้อจริง 30 ข้อ + Mock Test 60 ข้อ + เฉลยทุกหน้า</div></div><div class="cvf"><span class="brand">Math by T’Yasmin</span></div></section>'
-cover = '<section class="sl cover"><h1 style="position:absolute;left:-9999px">สารบัญ</h1><div class="chip">สารบัญ</div><div class="big">LPMC ครั้งที่ 25 · <b>คณิตศาสตร์</b> ป.5 · พ.ศ. 2567</div><div class="meta">ข้อจริง 30 ข้อ · Mock Test 60 ข้อ (ข้อละ 2 ข้อ) · เฉลยทุกข้อ</div><div class="list">'+''.join(f'<div><b>ข้อ {n}</b> {html.escape(ALL[n]["topic"])}</div>' for n in range(1,31))+'<div style="grid-column:span 6;text-align:center;--c:#E8C877">ลำดับ: ข้อจริง → เฉลย → Mock Test 1 → เฉลย → Mock Test 2 → เฉลย · เขียนวิธีคิดบนสไลด์ด้วยปากกาใน GoodNotes</div></div><div class="ft"><span></span><span class="brand">Math by T’Yasmin</span></div></section>'
+cv1 = '<section class="sl cvr"><h1 style="position:absolute;left:-9999px">หน้าปก Sigma Junior ป.5</h1><img class="bgb" src="assets/cover_blur.jpg"><img class="fg" src="assets/cover2.jpg"></section>'
+cover = '<section class="sl cover"><h1 style="position:absolute;left:-9999px">สารบัญ</h1><div class="chip">สารบัญ · สไลด์ติวสอบแข่งขัน</div><div class="big">ชิงแชมป์การคิดและแก้ปัญหา LPMC ครั้งที่ 25<br><b>คณิตศาสตร์</b> ป.5 · พ.ศ. 2567</div><div class="meta">ทั้งหมด 30 ข้อ · ข้อจริง → เฉลย → Mock Test 1 → เฉลย → Mock Test 2 → เฉลย</div><div class="list">'+''.join(f'<div><b>ข้อ {n}</b> {html.escape(ALL[n]["topic"])}</div>' for n in range(1,31))+'<div style="grid-column:span 6;text-align:center;--c:#E8C877">ลำดับ: ข้อจริง → เฉลย → Mock Test 1 → เฉลย → Mock Test 2 → เฉลย · เขียนวิธีคิดบนสไลด์ด้วยปากกาใน GoodNotes</div></div><div class="ft"><span></span><span class="brand">Math by T’Yasmin</span></div></section>'
 slides.append(cv1)
 slides.append(cover)
 n=2
