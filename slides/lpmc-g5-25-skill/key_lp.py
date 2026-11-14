@@ -6,9 +6,9 @@ F = '''@font-face{font-family:Mali;font-weight:500;src:url(ff/mali-thai-500-norm
 @font-face{font-family:Mali;font-weight:500;src:url(ff/mali-latin-500-normal.woff2);unicode-range:U+0000-00FF,U+2013-2014,U+2018-201F,U+2212,U+00D7,U+00F7}
 @font-face{font-family:Mali;font-weight:700;src:url(ff/mali-thai-700-normal.woff2);unicode-range:U+0E01-0E5B,U+200B-200D,U+25CC}
 @font-face{font-family:Mali;font-weight:700;src:url(ff/mali-latin-700-normal.woff2);unicode-range:U+0000-00FF,U+2013-2014,U+2018-201F,U+2212,U+00D7,U+00F7}
-@page{size:A4;margin:11mm}body{font-family:Mali,sans-serif;color:#10244a;font-size:9.6pt;margin:0}h1{font-size:13.5pt;margin:0 0 1mm}.s{color:#6B4FBB;font-weight:700;margin-bottom:3mm}
-table{border-collapse:collapse;width:100%}td,th{border:1px solid #c9d4e6;padding:1.1mm 2.6mm;text-align:left;vertical-align:top}th{background:#1c3a6b;color:#fff}th.m{background:#6B4FBB}
-tr:nth-child(odd) td{background:#f3f6fb}.c{text-align:center;font-weight:700;width:20mm}.f{margin-top:3mm;font-size:9pt;color:#4B3A86}'''
+@page{size:A4;margin:11mm}body{font-family:Mali,sans-serif;color:#0A2463;font-size:9.6pt;margin:0}h1{font-size:13.5pt;margin:0 0 1mm}.s{color:#6A5CE5;font-weight:700;margin-bottom:3mm}
+table{border-collapse:collapse;width:100%}td,th{border:1px solid #CFE3FB;padding:1.1mm 2.6mm;text-align:left;vertical-align:top}th{background:#01286D;color:#fff}th.m{background:#6A5CE5}
+tr:nth-child(odd) td{background:#F4F7FC}.c{text-align:center;font-weight:700;width:20mm}.f{margin-top:3mm;font-size:9pt;color:#3B2C9A}'''
 P = data_lp.P
 rows = ''.join(f"<tr><td class=c>{p['no']}</td><td>{html.escape(p['topic'])}</td>" + ''.join(f"<td class=c>{it['ans']}</td>" for it in p['items']) + '</tr>' for p in P)
 notes = [it['note'] for p in P for it in p['items'] if it['note']]

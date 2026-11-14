@@ -99,7 +99,7 @@ def solve_code(clues):
     return [p for p in itertools.permutations(range(10), 3)
             if all(len(set(g) & set(p)) == c and sum(g[i] == p[i] for i in range(3)) == ps for g, c, ps, _ in clues)]
 def code_html(clues):
-    return '<ul>' + ''.join(f"<li>{i + 1}) <b class='nw'>{' '.join(map(str, g))}</b> &nbsp;{t}</li>" for i, (g, _, _, t) in enumerate(clues)) + '</ul>'
+    return '<ul>' + ''.join(f"<li>{i + 1}) <span class='nw'>{''.join(f"<span class='dg'>{d}</span>" for d in g)}</span> &nbsp;{t}</li>" for i, (g, _, _, t) in enumerate(clues)) + '</ul>'
 def item6(clues, st):
     s = solve_code(clues); assert len(s) == 1, s; ans = ''.join(map(str, s[0]))
     q = f"เลขโดดใน □□□ (เลขโดดไม่ซ้ำกัน) เป็นเลขอะไร เมื่อเราทราบว่า" + code_html(clues)
@@ -462,6 +462,13 @@ def item30(area):
     return I(q, st, per, f"ตรวจ: มีคู่จำนวนเต็มเพียงคู่เดียวที่ ก × ก − ข × ข = {area} ✓", qimg=fig, aimg=fig)
 add(30, "พื้นที่และความยาวรอบรูป", "ผลต่างของพื้นที่จัตุรัสที่ด้านต่างกัน 1 คือ ก + ข", "ขอบบนแรเงามีแค่ส่วนที่เหลือ (ก − ข) ส่วนเส้นประไม่นับ", item30(9), item30(7), item30(11))
 
+# ข้อจริงใช้รูปจากไฟล์ข้อสอบต้นฉบับ (crop 300 dpi)
+ORIG = {3: 'q3', 4: 'q4', 9: 'q9', 10: 'q10', 12: 'q12', 19: 'q19', 27: 'q27', 30: 'q30'}
+for _no, _f in ORIG.items():
+    _it = P[_no - 1]['items'][0]; _img = f'<img class="img crop" src="assets/orig/{_f}.png">'
+    _it['qimg'] = _img
+    if _it['aimg']: _it['aimg'] = _img
+P[26]['items'][0]['note'] = 'รูปข้อ 1 ในข้อสอบวาดสามเหลี่ยมใบสุดท้ายคลาดไปเล็กน้อย แต่ตั้งใจให้เป็นรูปคลี่ที่พับได้'
 assert len(P) == 30 and [p['no'] for p in P] == list(range(1, 31))
 EXPECT_REAL = [200, 10, 24, 6, 20, '720', '0511', 4, 214, 20, '850', 81, 3, 6, 1, 70, 7, 10, 108, 6, 6, 6, 15, 123, 66, 5, 1, 5, 20, 28]
 assert [p['items'][0]['ans'] for p in P] == [str(x) for x in EXPECT_REAL], [p['items'][0]['ans'] for p in P]
