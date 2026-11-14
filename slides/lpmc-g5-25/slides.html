@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<title>ติว LPMC ป.5 ครั้งที่ 25</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;600;700&family=Mali:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1e2a5a; --blue: #2f6fb5; --sky: #4aa3df; --skyL: #e3f1fb; --skyM: #c6e2f7;
+    --purple: #6b4fbb; --purpleL: #efe9fb; --purpleM: #d9cdf5;
+    --gray: #6b7280; --grayL: #f3f4f6; --line: #d6dbe4; --ink: #1f2937;
+  }
+  @page { size: 1280px 720px; margin: 0; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: #fff; }
+  body { font-family: 'Prompt', sans-serif; color: var(--ink); }
+
+  .slide {
+    width: 1280px; height: 720px; position: relative; overflow: hidden; background: #fff;
+    padding: 34px 56px 52px; display: flex; flex-direction: column; gap: 18px;
+    break-after: page; page-break-after: always;
+  }
+  .slide:last-child { break-after: auto; page-break-after: auto; }
+  /* ลวดลายมุม */
+  .slide::before { content: ''; position: absolute; right: -140px; bottom: -160px; width: 420px; height: 420px; border-radius: 50%;
+                   background: radial-gradient(circle at 30% 30%, var(--skyL), transparent 70%); z-index: 0; }
+  .slide::after { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 12px;
+                  background: linear-gradient(var(--navy), var(--blue) 45%, var(--purple)); }
+  .slide > * { position: relative; z-index: 1; }
+
+  .top { display: flex; align-items: center; gap: 14px; flex: none; }
+  .badge { background: var(--navy); color: #fff; font-weight: 700; font-size: 26px; padding: 4px 20px; border-radius: 12px; }
+  .kind { font-weight: 600; font-size: 20px; padding: 5px 16px; border-radius: 999px; }
+  .k-q { background: var(--skyL); color: var(--blue); }
+  .k-s { background: var(--purpleL); color: var(--purple); }
+  .k-p { background: var(--navy); color: #fff; background: linear-gradient(90deg, var(--blue), var(--purple)); }
+  .k-a { background: var(--purpleL); color: var(--purple); border: 2px solid var(--purpleM); }
+  .topic { font-size: 18px; color: var(--gray); border: 1.5px solid var(--line); padding: 3px 14px; border-radius: 999px; }
+  .top .logo { margin-left: auto; height: 46px; opacity: .9; }
+
+  .foot { position: absolute; left: 56px; right: 40px; bottom: 16px; display: flex; justify-content: space-between;
+          font-size: 14px; color: #9aa3b1; z-index: 1; }
+
+  /* กล่องเนื้อหา */
+  .card { background: #fff; border: 2px solid var(--line); border-radius: 22px; padding: 22px 30px; min-height: 0;
+          box-shadow: 0 6px 0 var(--skyL); }
+  .fit { overflow: hidden; min-height: 0; }
+  .qtext { line-height: 1.6; }
+  .qtext b { color: var(--navy); }
+  .small { font-size: .78em; color: var(--gray); }
+  .seq { display: inline-block; margin: 6px 0; padding: 4px 14px; background: var(--skyL); border-radius: 10px; font-weight: 600; color: var(--navy); letter-spacing: 1px; }
+
+  .op { font-family: 'Mali', sans-serif; font-weight: 600; }
+  .fr { display: inline-flex; flex-direction: column; vertical-align: middle; text-align: center; font-size: .82em; line-height: 1.05; margin: 0 2px; }
+  .fr span:first-child { border-bottom: 2px solid currentColor; padding: 0 3px; }
+  .opts { display: flex; flex-wrap: wrap; gap: 6px 26px; margin-top: 10px; }
+  .opts span { background: var(--grayL); border-radius: 10px; padding: 2px 14px; }
+  table.code { border-collapse: separate; border-spacing: 10px 4px; margin-top: 6px; }
+  table.code td:first-child { color: var(--gray); }
+  table.code td:nth-child(2) { white-space: nowrap; }
+  table.code b { display: inline-block; width: 1.55em; height: 1.55em; line-height: 1.5em; text-align: center; border: 2px solid var(--navy);
+                 border-radius: 6px; margin-right: 6px; color: var(--navy); background: #fff; }
+  table.grid { border-collapse: collapse; margin: 4px 0; font-size: .92em; }
+  table.grid th, table.grid td { border: 1.5px solid var(--line); padding: 2px 12px; text-align: center; }
+  table.grid th { background: var(--skyL); color: var(--navy); font-weight: 600; }
+
+  .figbox { display: flex; align-items: center; justify-content: center; gap: 30px; flex-wrap: wrap; min-height: 0; }
+  .fig { width: 100%; height: auto; display: block; }
+  .netopt { display: flex; align-items: flex-start; gap: 6px; font-weight: 600; color: var(--navy); font-size: 22px; }
+  .netopt .fig { width: auto; height: 230px; }
+
+  /* โจทย์ */
+  .q-main { flex: 1; display: flex; flex-direction: column; gap: 16px; }
+  .q-main .fit { flex: 1 1 auto; }
+  .q-main.withfig .fit { flex: 0 1 auto; max-height: 52%; }
+  .q-main .figbox { flex: 1 1 0; }
+  .q-main .figbox .fig { max-height: 320px; width: 100%; }
+  .q-main.side { flex-direction: row; align-items: center; }
+  .q-main.side .fit { flex: 1 1 55%; max-height: 100%; }
+  .q-main.side .figbox { flex: 0 0 40%; }
+  .hint { flex: none; align-self: flex-start; font-size: 17px; color: var(--purple); background: var(--purpleL); border-radius: 999px; padding: 4px 16px; }
+
+  /* วิธีคิด */
+  .s-main { flex: 1; display: flex; gap: 24px; min-height: 0; }
+  .steps { flex: 1; display: flex; flex-direction: column; gap: 10px; }
+  .steps ol { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; counter-reset: st; }
+  .steps li { counter-increment: st; display: flex; gap: 14px; align-items: flex-start; background: var(--grayL); border-radius: 14px; padding: 8px 16px; line-height: 1.5; }
+  .steps li::before { content: counter(st); flex: none; width: 1.6em; height: 1.6em; border-radius: 50%; background: var(--purple); color: #fff;
+                      font-weight: 700; display: flex; align-items: center; justify-content: center; font-size: .85em; margin-top: .1em; }
+  .s-side { flex: 0 0 34%; display: flex; flex-direction: column; gap: 14px; justify-content: center; }
+  .s-side .figbox .fig { max-height: 320px; width: 100%; }
+  .ansrow { flex: none; display: flex; align-items: center; gap: 16px; }
+  .ans { display: inline-flex; align-items: center; gap: 14px; background: var(--navy); color: #fff; border-radius: 16px; padding: 8px 26px; font-size: 30px; font-weight: 700; }
+  .ans small { font-size: 18px; font-weight: 500; color: var(--skyM); }
+  .note { font-size: 16px; color: var(--gray); }
+  .recap { flex: none; font-size: 17px; color: var(--gray); line-height: 1.5; max-height: 3.1em; overflow: hidden; }
+
+  /* ข้อเสมือน */
+  .p-main { flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 26px; min-height: 0; }
+  .p-card { display: flex; flex-direction: column; gap: 12px; }
+  .p-card .tag { align-self: flex-start; font-weight: 700; font-size: 20px; color: #fff; padding: 3px 16px; border-radius: 10px; background: var(--blue); }
+  .p-card:nth-child(2) .tag { background: var(--purple); }
+  .p-card .fit { flex: 1 1 auto; }
+  .p-card.withfig .fit { flex: 0 1 auto; max-height: 55%; }
+  .p-card .figbox { flex: 1 1 0; }
+  .p-card .figbox .fig { max-height: 230px; width: 100%; }
+  .p-card .netopt .fig { height: 150px; }
+  .p-card .netopt { font-size: 18px; }
+  .p-card.sol .q { color: var(--gray); }
+  .p-card.sol ol { list-style: none; padding: 0; margin: 8px 0 0; display: flex; flex-direction: column; gap: 8px; counter-reset: st; }
+  .p-card.sol li { counter-increment: st; display: flex; gap: 10px; background: var(--grayL); border-radius: 12px; padding: 6px 12px; line-height: 1.45; color: var(--ink); }
+  .p-card.sol li::before { content: counter(st); flex: none; width: 1.5em; height: 1.5em; border-radius: 50%; background: var(--sky); color: #fff;
+                           font-weight: 700; display: flex; align-items: center; justify-content: center; font-size: .8em; margin-top: .12em; }
+  .p-card .ans { font-size: 24px; padding: 6px 20px; align-self: flex-start; flex: none; }
+
+  /* ปก */
+  .cover { justify-content: center; align-items: flex-start; padding-left: 110px; gap: 10px;
+           background: linear-gradient(135deg, #fff 55%, var(--skyL) 55%, var(--skyL) 72%, var(--purpleL) 72%); }
+  .cover::before { display: none; }
+  .cover .eyebrow { font-size: 24px; color: var(--purple); font-weight: 600; background: var(--purpleL); padding: 4px 18px; border-radius: 999px; }
+  .cover h1 { margin: 6px 0 0; font-size: 60px; line-height: 1.2; color: var(--navy); }
+  .cover h2 { margin: 0; font-size: 30px; font-weight: 500; color: var(--blue); }
+  .cover .meta { margin-top: 18px; display: flex; gap: 12px; flex-wrap: wrap; }
+  .cover .meta span { font-size: 20px; border: 2px solid var(--line); background: #fff; border-radius: 12px; padding: 4px 16px; color: var(--gray); }
+  .cover .bigLogo { position: absolute; right: 70px; bottom: 70px; width: 300px; }
+  .howto { margin-top: 26px; display: flex; gap: 12px; }
+  .howto div { background: #fff; border: 2px solid var(--line); border-radius: 14px; padding: 8px 16px; font-size: 18px; }
+  .howto b { color: var(--navy); }
+
+  /* สรุปเฉลย */
+  .sum { flex: 1; display: grid; grid-template-columns: repeat(6, 1fr); grid-template-rows: repeat(5, 1fr); gap: 10px; min-height: 0; }
+  .sum div { border: 2px solid var(--line); border-radius: 14px; display: flex; align-items: center; gap: 10px; padding: 4px 12px; background: #fff; }
+  .sum b { flex: none; width: 36px; height: 36px; border-radius: 10px; background: var(--navy); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+  .sum div:nth-child(even) b { background: var(--purple); }
+  .sum span { font-size: 19px; font-weight: 600; color: var(--navy); line-height: 1.2; }
+</style>
+</head>
+<body>
+<div id="deck"></div>
+<script src="figures.js"></script>
+<script src="data.js"></script>
+<script>
+const deck = document.getElementById('deck');
+const slides = [];
+const LOGO = '<img class="logo" src="images/logo.png" alt="">';
+const head = (n, kind, cls, topic) => `<div class="top"><span class="badge">ข้อ ${n}</span><span class="kind ${cls}">${kind}</span><span class="topic">${topic}</span>${LOGO}</div>`;
+const figHTML = o => o.figs ? `<div class="figbox">${o.figs().join('')}</div>` : o.fig ? `<div class="figbox">${o.fig()}</div>` : '';
+const plain = h => h.replace(/<table[\s\S]*?<\/table>|<div class="opts">[\s\S]*?<\/div>/g, ' … ').replace(/<br>/g, ' ').replace(/<span class="fr"><span>(.*?)<\/span><span>(.*?)<\/span><\/span>/g, '$1/$2').replace(/<[^>]+>/g, '');
+
+// ปก
+slides.push(`<section class="slide cover">
+  <span class="eyebrow">สไลด์ติว · คณิตศาสตร์ ป.5</span>
+  <h1>ข้อสอบชิงแชมป์การคิด<br>และการแก้ปัญหาคณิตศาสตร์</h1>
+  <h2>ครั้งที่ 25 · ปีการศึกษา 2567 · 30 ข้อ พร้อมข้อเสมือนข้อละ 2 ข้อ</h2>
+  <div class="howto"><div><b>1</b> โจทย์ · ลองคิดก่อน</div><div><b>2</b> วิธีคิดทีละขั้น</div><div><b>3</b> ข้อเสมือน 2 ข้อ</div><div><b>4</b> เฉลยข้อเสมือน</div></div>
+  <img class="bigLogo" src="images/logo.png" alt="">
+</section>`);
+
+DATA.forEach(d => {
+  const hasFig = !!(d.fig || d.figs);
+  const side = hasFig && (d.n === 9 || d.n === 19 || d.n === 30 || d.n === 10);
+  // 1) โจทย์
+  slides.push(`<section class="slide">${head(d.n, 'โจทย์', 'k-q', d.topic)}
+    <div class="card q-main ${hasFig ? 'withfig' : ''} ${side ? 'side' : ''}">
+      <div class="fit qtext" data-max="42">${d.q}</div>${figHTML(d)}
+    </div>
+    <span class="hint">ลองคิดก่อนดูวิธีทำ</span>
+  </section>`);
+  // 2) วิธีคิด
+  const sideFig = hasFig && !d.figs && d.n !== 3 && d.n !== 4 && d.n !== 12;
+  slides.push(`<section class="slide">${head(d.n, 'วิธีคิด', 'k-s', d.topic)}
+    <div class="recap">${plain(d.q)}</div>
+    <div class="s-main">
+      <div class="steps fit" data-max="31"><ol>${d.steps.map(s => `<li><div>${s}</div></li>`).join('')}</ol></div>
+      ${sideFig ? `<div class="s-side">${figHTML(d)}</div>` : ''}
+    </div>
+    <div class="ansrow"><span class="ans"><small>ตอบ</small>${d.ans}</span>${d.note ? `<span class="note">* ${d.note}</span>` : ''}</div>
+  </section>`);
+  // 3) ข้อเสมือน
+  slides.push(`<section class="slide">${head(d.n, 'ข้อเสมือน', 'k-p', d.topic)}
+    <div class="p-main">${d.sims.map((s, i) => `<div class="card p-card ${(s.fig || s.figs) ? 'withfig' : ''}">
+      <span class="tag">${d.n}.${i + 1}</span><div class="fit qtext" data-max="34">${s.q}</div>${figHTML(s)}</div>`).join('')}</div>
+  </section>`);
+  // 4) เฉลยข้อเสมือน
+  slides.push(`<section class="slide">${head(d.n, 'เฉลยข้อเสมือน', 'k-a', d.topic)}
+    <div class="p-main">${d.sims.map((s, i) => `<div class="card p-card sol">
+      <span class="tag">${d.n}.${i + 1}</span>
+      <div class="fit" data-max="28"><div class="q small">${plain(s.q)}</div><ol>${s.sol.map(x => `<li><div>${x}</div></li>`).join('')}</ol></div>
+      <span class="ans"><small>ตอบ</small>${s.ans}</span></div>`).join('')}</div>
+  </section>`);
+});
+
+// สรุปเฉลย
+slides.push(`<section class="slide"><div class="top"><span class="badge">สรุป</span><span class="kind k-s">เฉลยข้อสอบ 30 ข้อ</span>${LOGO}</div>
+  <div class="sum">${DATA.map(d => `<div><b>${d.n}</b><span>${d.ans}</span></div>`).join('')}</div></section>`);
+
+deck.innerHTML = slides.join('\n');
+document.querySelectorAll('.slide').forEach((s, i, all) => {
+  s.insertAdjacentHTML('beforeend', `<div class="foot"><span>ติวข้อสอบชิงแชมป์การคิดและการแก้ปัญหาคณิตศาสตร์ ครั้งที่ 25 · ป.5</span><span>${i + 1} / ${all.length}</span></div>`);
+});
+
+// เครื่องหมายคณิตศาสตร์ใช้ฟอนต์ที่อ่านชัด
+(function wrapOps() {
+  const tw = document.createTreeWalker(deck, NodeFilter.SHOW_TEXT, { acceptNode: n => n.parentElement.closest('svg') ? NodeFilter.FILTER_REJECT : /[+×÷−=]/.test(n.nodeValue) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP });
+  const list = []; while (tw.nextNode()) list.push(tw.currentNode);
+  list.forEach(n => { const sp = document.createElement('span'); sp.innerHTML = n.nodeValue.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/[+×÷−=]/g, m => `<span class="op">${m}</span>`); n.replaceWith(...sp.childNodes); });
+})();
+
+// ย่อขนาดตัวอักษรให้พอดีกล่อง
+function fitAll() {
+  document.querySelectorAll('.fit').forEach(el => {
+    let f = +el.dataset.max || 28;
+    el.style.fontSize = f + 'px';
+    while ((el.scrollHeight > el.clientHeight + 1 || el.scrollWidth > el.clientWidth + 1) && f > 14) {
+      f -= 1; el.style.fontSize = f + 'px';
+    }
+    el.dataset.final = f;
+  });
+  window.__fitted = true;
+}
+(document.fonts ? document.fonts.ready : Promise.resolve()).then(() => setTimeout(fitAll, 50));
+</script>
+</body>
+</html>
