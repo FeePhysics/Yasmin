@@ -85,7 +85,7 @@ def item19(s1, s2, real=False):
     p1 = [(x, s1 - x) for x in range(1, s1) if x < s1 - x]; p2 = [(x, s2 - x) for x in range(1, s2) if x < s2 - x]
     st = [f"A + B = {s1}: " + ', '.join(f"{x}+{y}" for x, y in p1), f"C + D = {s2}: " + ', '.join(f"{x}+{y}" for x, y in p2),
           "เลือกคู่ที่ตัวเลขไม่ซ้ำ และ B, D ต้องใหญ่กว่า A, C ทั้งคู่", f"A = {a}, B = {b}, C = {c}, D = {d} → B + D = {b} + {d} = {ans}"]
-    return I(q, st, ans, "ตรวจ: ไล่ทุกชุดตัวเลข 1–9 ไม่ซ้ำด้วยโปรแกรม ได้ B + D ค่าเดียว ✓", qimg=ORIG('q19') if real else fg.cards('ABCD'),
+    return I(q, st, ans, "ตรวจ: ไล่ทุกชุดตัวเลข 1–9 ไม่ซ้ำด้วยโปรแกรม ได้ B + D ค่าเดียว ✓", qimg="<div class='sm'>" + (ORIG('q19') if real else fg.cards('ABCD')) + '</div>',
              aimg=fg.cards('ABCD', [a, b, c, d]), note=("ถือว่าตัวเลขเป็นจำนวนนับ (ไม่ใช้ 0)" if real else ''))
 add(19, "ตรรกะ (ผลบวกของป้าย)", "เขียนคู่ที่บวกกันได้ออกมาให้ครบก่อน", "B และ D ต้องมากกว่าทั้ง A และ C ไม่ใช่แค่ตัวคู่ของมัน", item19(5, 6, True), item19(7, 5), item19(4, 9))
 
@@ -164,7 +164,7 @@ def item24(n, f, b, real=False):
     st = [f"ลูกแรก: หน้าเห็น {f} → ด้านที่ติดลูกถัดไป = 7 − {f} = {7 - f}", f"ลูกสุดท้าย: หลังเห็น {b} → ด้านที่ติดกัน = 7 − {b} = {7 - b}"]
     if n > 2: st.append(f"ลูกตรงกลาง {n - 2} ลูก: 2 ด้านที่ติดเป็นด้านตรงข้าม รวม = 7")
     st.append(f"รวม = {' + '.join(parts)} = {s}")
-    return I(q, st, s, "ตรวจ: ลองทุกการหมุนของลูกกลางด้วยโปรแกรม ผลรวมไม่เปลี่ยน ✓", qimg=ORIG('q24') if real else fg.dice_row(n, f, b, inner=False), aimg=fg.dice_row(n, f, b))
+    return I(q, st, s, "ตรวจ: ลองทุกการหมุนของลูกกลางด้วยโปรแกรม ผลรวมไม่เปลี่ยน ✓", qimg="<div class='md'>" + (ORIG('q24') if real else fg.dice_row(n, f, b, inner=False)) + '</div>', aimg=fg.dice_row(n, f, b))
 add(24, "ลูกเต๋า (หน้าตรงข้าม)", "ด้านตรงข้ามบวกกันได้ 7 เสมอ", "ลูกกลางไม่ต้องรู้แต้ม เพราะ 2 ด้านที่ติดรวมกันได้ 7", item24(3, 4, 1, True), item24(2, 2, 5), item24(4, 6, 3))
 
 # ---------------- 25 สี่เหลี่ยมในตาราง ----------------
