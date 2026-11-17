@@ -65,13 +65,13 @@ for o,n in zip(ORIG,NEW): print(f'{o:22} -> {n[0]:22} {n[3]} = {n[2]}')
 css=ns['css']+'''
 .bar .main{font-size:15pt}
 .cmd{font-weight:700;font-size:9.6pt;color:#10244a;padding:0 1mm}.cmd b{background:#1c3a6b;color:#fff;border-radius:2mm;padding:.2mm 2mm;margin-right:1.5mm}.cmd i{font-style:normal;color:#4a6aa8}
-.grid{grid-template-rows:repeat(8,1fr);gap:2.2mm 3.4mm}
+.grid{grid-template-rows:repeat(6,1fr);gap:2.2mm 3.4mm}
 .q{padding:2mm 3mm 2mm 9.5mm;gap:1.4mm}
 .eqr{display:flex;align-items:center;gap:2mm}
-.eq{font-family:Looped,Mali,sans-serif;font-weight:700;font-size:13.5pt;color:#10244a;letter-spacing:.2mm;white-space:nowrap}
+.eq{font-family:Mali,sans-serif;font-weight:700;font-size:13.5pt;color:#10244a;letter-spacing:.2mm;white-space:nowrap}
 .ab{margin-left:auto;display:flex;align-items:center;gap:1.5mm;font-weight:700;font-size:11pt;color:#1c3a6b;white-space:nowrap}
 .ab span.bx{display:inline-block;width:20mm;height:7mm;border:1.3px solid #7c97c8;border-radius:2mm;background:#eef3fc}
-.w{margin-top:2mm}
+.w{margin-top:2.6mm;display:flex;flex-direction:column;padding:3mm 3.5mm 1.6mm}.w i{flex:1;border-bottom:1.1px solid #b9c9e6}
 .sec .lv{background:#1c3a6b;color:#fff;border-radius:6mm;padding:.8mm 4mm;font-weight:700;font-size:10.4pt}
 .ks{font-size:8.8pt}.ke{font-size:7.6pt}.kg{grid-template-rows:repeat(24,1fr)}
 .legend{display:flex;gap:3mm;font-weight:700;font-size:9pt}.legend span{border-radius:4mm;padding:.6mm 3.4mm;background:#e8eefb;border:1px solid #c6d4ee}
@@ -81,15 +81,15 @@ HINT=['คำตอบเป็นจำนวนสองหลัก','คำ�
 def header(right):
     return f'<div class="bar"><span></span><div class="ttl"><span class="main"><b>1</b>การแก้สมการบวกลบ</span><span class="lev">(คณิตศาสตร์ ป.4 · ทบทวนก่อนสอบ)</span></div><span class="pill">{right}</span></div>'
 def card(i):
-    e,v,a,s=NEW[i]
-    return f'<div class="q c{i%3}"><span class="n">{i+1}</span><div class="eqr"><span class="eq">{html.escape(e)}</span><span class="ab">{v} =<span class="bx"></span></span></div><div class="w"><span>วิธีคิด</span></div></div>'
+    e,v,a,s=NEW[i];lvc=['หลักสิบ','หลักร้อย','หลักพัน'][i//16]
+    return f'<div class="q c{i%3}"><span class="n">{i+1}</span><div class="eqr"><span class="eq">{html.escape(e)}</span><span class="ab">{v} =<span class="bx"></span></span></div><div class="w"><span>วิธีคิด</span><i></i><i></i><i></i><i></i></div></div>'
 out=''
-for p in range(3):
-    a=p*16
+for p in range(4):
+    a=p*12
     top=''
     if p==0:
         top='<div class="info"><span>ชื่อ - นามสกุล</span><span class="fill" style="flex:1"></span><span>เลขที่</span><span class="fill" style="width:16mm"></span><span>ห้อง</span><span class="fill" style="width:18mm"></span><span>คะแนน</span><span class="fill" style="width:16mm"></span><span>/ 48</span></div><div class="cmd"><b>คำสั่ง</b>ให้นักเรียนหาค่าของตัวแปรในแต่ละสมการ พร้อมแสดงวิธีคิด <i>(คำตอบทุกข้อเป็นจำนวนบวก)</i></div>'
-    out+=f'<div class="pg"><img class="wm" src="logo.png">{header("ทบทวนก่อนสอบ")}{top}<div class="sec"><span class="lv">{LV[p]}</span><span class="d">ข้อ {a+1}–{a+16}</span><span class="h">{HINT[p]} · ย้ายข้างแล้วเปลี่ยนเครื่องหมาย</span></div><div class="grid">{"".join(card(a+j) for j in range(16))}</div>{ns["footer"](p+1)}</div>'
+    out+=f'<div class="pg"><img class="wm" src="logo.png">{header("ทบทวนก่อนสอบ")}{top}<div class="sec"><span class="lv">{" · ".join(dict.fromkeys(LV[i//16] for i in range(a,a+12)))}</span><span class="d">ข้อ {a+1}–{a+12}</span><span class="h">ย้ายข้างแล้วเปลี่ยนเครื่องหมาย · คำตอบเป็นจำนวนบวก</span></div><div class="grid">{"".join(card(a+j) for j in range(12))}</div>{ns["footer"](p+1)}</div>'
 def kcell(i):
     e,v,a,s=NEW[i]
     return f'<div class="kq c{i//16}"><span class="n">{i+1}</span><div class="kt"><div class="ke">{html.escape(e)}</div><div class="ks">{html.escape(s)} = <b>{a}</b></div></div></div>'
