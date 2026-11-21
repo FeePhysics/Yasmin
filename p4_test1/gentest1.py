@@ -70,8 +70,28 @@ def item(i,key):
     e,V,x,s=Q[i]
     body=f'<div class="sol">{html.escape(s)} = {x}</div>' if key else '<div class="wk"></div>'
     return f'<div class="it"><div class="row"><span class="n c{(i//5)%3}">{i+1}</span><span class="eq">{html.escape(e)}</span><span class="ab">{V} =<span class="bl">{x if key else ""}</span></span></div>{body}</div>'
-info='<div class="info"><span>ชื่อ - นามสกุล</span><span class="fill" style="flex:1"></span><span>ชั้น</span><span class="fill" style="width:18mm"></span><span>เลขที่</span><span class="fill" style="width:14mm"></span><span>คะแนน</span><span class="fill" style="width:16mm"></span><span>/ 30</span></div><div class="cmd"><b>คำสั่ง</b>หาค่าของตัวแปรในแต่ละสมการ เขียนวิธีคิดใต้ข้อ <i>(คำตอบทุกข้อเป็นจำนวนบวก)</i></div>'
+info='<div class="info"><span>ชื่อ - นามสกุล</span><span class="fill" style="flex:1"></span><span>ชั้น</span><span class="fill" style="width:18mm"></span><span>เลขที่</span><span class="fill" style="width:14mm"></span><span>คะแนน</span><span class="fill" style="width:16mm"></span><span>/ 30</span></div><div class="cmd"><b>คำสั่ง</b>หาค่าของตัวแปรในแต่ละสมการ แสดงวิธีทำ <i>(คำตอบทุกข้อเป็นจำนวนบวก)</i></div>'
 def page(key):
     return f'<div class="pg"><img class="wm" src="logo.png">{header("เฉลย" if key else "30 คะแนน")}{"" if key else info}<div class="sec"><span class="p">ตอนที่ 1</span><span class="d">ข้อ 1–30 · เรียงลงมาตามคอลัมน์</span><span class="h">ย้ายข้างแล้วเปลี่ยนเครื่องหมาย</span></div><div class="cols">{"".join(item(i,key) for i in range(30))}</div>{ns["footer"](None if key else 1)}</div>'
 w=lambda b:f'<!doctype html><meta charset=utf-8><style>{css}</style>'+b
 open('t1.html','w').write(w(page(False)));open('t1key.html','w').write(w(page(True)))
+# ---- 2-page layout: 15 per page, 3 across x 5 rows, 4 work lines ----
+css2=css+'''
+.g3{flex:1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(5,1fr);gap:2.6mm 2.6mm;min-height:0;margin-bottom:3.5mm}
+.c3{position:relative;border:1.3px solid #c6d4ee;border-top:1.6mm solid var(--c);border-radius:3.4mm;background:rgba(255,255,255,.6);display:flex;flex-direction:column;padding:2mm 2.6mm 1.6mm;min-height:0}
+.c3 .n{left:-1.2mm;top:-1.6mm}
+.c3 .eq{font-size:12.2pt;padding-left:5.4mm;letter-spacing:0}
+.wb{position:relative;flex:1;margin-top:2.6mm;border:1.1px solid #9db6e0;border-radius:2mm;display:flex;flex-direction:column;padding:2.6mm 2.4mm .6mm}
+.wb>span{position:absolute;left:2.4mm;top:-2.4mm;background:#fff;padding:0 1mm;font-size:7.6pt;color:#4a6aa8;font-weight:700}
+.wb i{flex:1;border-bottom:1px solid #b9c9e6}
+.ar{display:flex;justify-content:flex-end;align-items:flex-end;gap:1.4mm;margin-top:1.6mm;font-weight:700;font-size:11pt;color:#1c3a6b}
+.ar .bl{display:inline-block;width:22mm;height:6mm;border:1.2px solid #7c97c8;border-radius:1.8mm;background:#eef3fc}
+'''
+def card3(i):
+    e,V,x,s=Q[i]
+    return f'<div class="c3 c{i%3}"><span class="n">{i+1}</span><span class="eq">{html.escape(e)}</span><div class="wb"><span>วิธีทำ</span><i></i><i></i><i></i><i></i></div><div class="ar">{V} =<span class="bl"></span></div></div>'
+out2=''
+for p in range(2):
+    a=p*15
+    out2+=f'<div class="pg"><img class="wm" src="logo.png">{header("30 คะแนน")}{info if p==0 else ""}<div class="sec"><span class="p">ตอนที่ 1</span><span class="d">ข้อ {a+1}–{a+15}</span><span class="h">ย้ายข้างแล้วเปลี่ยนเครื่องหมาย · คำตอบเป็นจำนวนบวก</span></div><div class="g3">{"".join(card3(i) for i in range(a,a+15))}</div>{ns["footer"](p+1)}</div>'
+open('t1.html','w').write(f'<!doctype html><meta charset=utf-8><style>{css2}</style>'+out2)
