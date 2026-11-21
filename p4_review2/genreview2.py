@@ -67,7 +67,7 @@ assert len({n[0] for n in NEW})==30 and not {n[0] for n in NEW}&set(ORIG)
 for i,n in enumerate(NEW): print(i+1,n[0],'|',n[3],'=',n[2])
 css=ns['css']+'''
 .bar .main{font-size:15pt}
-.cmd{font-weight:700;font-size:9.6pt;color:#10244a;padding:0 1mm}.cmd b{background:#1c3a6b;color:#fff;border-radius:2mm;padding:.2mm 2mm;margin-right:1.5mm}.cmd i{font-style:normal;color:#4a6aa8}
+.cmd{font-weight:700;font-size:9.6pt;color:#10244a;padding:0 1mm}.cmd b{display:inline-block;background:#1c3a6b;color:#fff;border-radius:2mm;padding:1.2mm 2.4mm .5mm;line-height:1.25;margin-right:1.5mm}.cmd i{font-style:normal;color:#4a6aa8}
 .grid{grid-template-rows:repeat(5,1fr);gap:2.2mm 3.4mm}
 .q{padding:2mm 3mm 2mm 9.5mm;gap:1.4mm}
 .eqr{display:flex;align-items:center;gap:2mm}

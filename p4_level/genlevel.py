@@ -59,7 +59,7 @@ css=ns['css']+'''
 .ab .bl{display:inline-block;width:19mm;border-bottom:1.3px solid #7c97c8;height:5.5mm;text-align:center;color:#d0342c;font-size:12.5pt}
 .wk{flex:1;margin:1.4mm 0 1.4mm 9.4mm;border-bottom:1px dashed #cfdbef}
 .sol{font-size:9.6pt;color:#4a6aa8;font-weight:600;margin:.8mm 0 0 9.4mm}
-.cmd{font-weight:700;font-size:9.6pt;color:#10244a;padding:0 1mm}.cmd b{background:#1c3a6b;color:#fff;border-radius:2mm;padding:.2mm 2mm;margin-right:1.5mm}.cmd i{font-style:normal;color:#4a6aa8}
+.cmd{font-weight:700;font-size:9.6pt;color:#10244a;padding:0 1mm}.cmd b{display:inline-block;background:#1c3a6b;color:#fff;border-radius:2mm;padding:1.2mm 2.4mm .5mm;line-height:1.25;margin-right:1.5mm}.cmd i{font-style:normal;color:#4a6aa8}
 '''
 def header(right):
     return f'<div class="bar"><span></span><div class="ttl"><span class="main"><b>1</b>การแก้สมการที่เป็นบวกลบ</span><span class="lev">(คณิตศาสตร์ ป.4 · 30 ข้อ)</span></div><span class="pill">{right}</span></div>'

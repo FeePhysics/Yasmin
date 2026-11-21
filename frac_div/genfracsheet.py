@@ -2,7 +2,7 @@ code=open('genfrac.py').read(); code=code[:code.index("css=ns['css']")]
 g={};exec(code,g);Q=g['Q'];opnd=g['opnd'];ns=g['ns']
 css=ns['css']+'''
 .bar .main{font-size:15pt}
-.cmd{font-weight:700;font-size:9.8pt;color:#10244a;padding:0 1mm}.cmd b{background:#1c3a6b;color:#fff;border-radius:2mm;padding:.2mm 2mm;margin-right:1.5mm}
+.cmd{font-weight:700;font-size:9.8pt;color:#10244a;padding:0 1mm}.cmd b{display:inline-block;background:#1c3a6b;color:#fff;border-radius:2mm;padding:1.2mm 2.4mm .5mm;line-height:1.25;margin-right:1.5mm}
 .cols{flex:1;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-auto-flow:column;grid-template-rows:repeat(10,1fr);gap:2mm 4mm;min-height:0;margin-bottom:3.5mm}
 .it{position:relative;border:1.2px solid #c6d4ee;border-left:1.6mm solid var(--c);border-radius:3mm;background:rgba(255,255,255,.6);display:flex;flex-direction:column;padding:1.4mm 3mm 1.2mm 12.5mm;min-height:0}
 .it .n{left:2mm;top:2mm}

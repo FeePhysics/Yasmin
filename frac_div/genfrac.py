@@ -52,7 +52,7 @@ css=ns['css']+'''
 .sg{display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:0 1.3mm;border-right:1px dashed #cfdbef}
 .sg:last-child{border-right:0}
 .sg .lb{font-size:6.3pt;font-weight:700;color:#4a6aa8;white-space:nowrap;background:#e8eefb;border-radius:1.6mm;padding:0 1.4mm;margin-bottom:.8mm}
-.sg:first-child .lb{background:#1c3a6b;color:#fff}
+.sg:first-child .lb{background:#1c3a6b;color:#fff;padding:.7mm 1.6mm .1mm}
 .ex{flex:1;display:flex;align-items:center;font-family:Mali;font-weight:700;color:#10244a;font-size:10.6pt;white-space:nowrap}
 .fr{display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;margin:0 .6mm;line-height:1.05}
 .fr span:first-child{border-bottom:1.3px solid #10244a;padding:0 .8mm}
