@@ -93,3 +93,22 @@ for p in range(2):
     a=p*15
     out2+=f'<div class="pg"><img class="wm" src="logo.png">{header("30 คะแนน")}{info if p==0 else ""}<div class="sec"><span class="p">ข้อ {a+1}–{a+15}</span><span class="h">ข้อละ 1 คะแนน</span></div><div class="g3">{"".join(card3(i) for i in range(a,a+15))}</div>{ns["footer"](p+1)}</div>'
 open('tp.html','w').write(f'<!doctype html><meta charset=utf-8><style>{css2}</style>'+out2)
+# ---- 1-page layout: 30 items, 3 across x 10 rows ----
+css3=css+'''
+.pg{padding:5mm 8mm 10mm;gap:1.6mm}
+.g10{flex:1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(10,1fr);gap:1.8mm 2.4mm;min-height:0;margin-bottom:3mm}
+.c1{position:relative;border:1.2px solid #c6d4ee;border-left:1.6mm solid var(--c);border-radius:2.6mm;background:rgba(255,255,255,.62);display:flex;flex-direction:column;padding:1mm 2mm 1mm 8.6mm;min-height:0}
+.c1 .n{left:1.4mm;top:1.2mm;width:6mm;height:6mm;line-height:6mm;font-size:8.4pt}
+.c1 .eq{font-size:11.4pt;letter-spacing:0;line-height:1.25}
+.bt{flex:1;display:flex;align-items:flex-end;gap:2mm;min-height:0}
+.ln2{flex:1;align-self:stretch;display:flex;flex-direction:column}
+.ln2 i{flex:1;border-bottom:1px solid #b9c9e6}
+.a1{display:flex;align-items:center;gap:1mm;font-weight:700;font-size:10pt;color:#1c3a6b;white-space:nowrap}
+.a1 span{display:inline-block;width:15mm;height:5.6mm;border:1.2px solid #7c97c8;border-radius:1.6mm;background:#eef3fc}
+'''
+def card1(i):
+    e,V,x,s=Q[i]
+    return f'<div class="c1 c{i%3}"><span class="n">{i+1}</span><span class="eq">{html.escape(e)}</span><div class="bt"><div class="ln2"><i></i><i></i></div><div class="a1">{V} =<span></span></div></div></div>'
+info1=info.replace('<div class="cmd">','<div class="cmd">')
+one=f'<div class="pg"><img class="wm" src="logo.png">{header("30 คะแนน")}{info}<div class="sec"><span class="p">ข้อ 1–30</span><span class="h">ข้อละ 1 คะแนน</span></div><div class="g10">{"".join(card1(i) for i in range(30))}</div>{ns["footer"](None)}</div>'
+open('tp1.html','w').write(f'<!doctype html><meta charset=utf-8><style>{css3}</style>'+one)
